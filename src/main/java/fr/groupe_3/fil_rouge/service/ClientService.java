@@ -21,12 +21,12 @@ public class ClientService {
     }
 
     // Get one
-    public Optional<Client> getOneClientById(Long id) {
+    public Optional<Client> getOneClientById(Integer id) {
         return clientRepo.findById(id);
     }
 
     // Delete one
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         clientRepo.deleteById(id);
     }
 
@@ -36,8 +36,23 @@ public class ClientService {
     }
 
     // Put
-    public void updatedClient(Long id, Client client) {
+    public void updatedClient(Integer id, Client client) {
         clientRepo.save(client);
+    }
+
+    // Patch
+    public void patchClient(Integer id, Client clientPatch) {
+
+        Optional<Client> optional = clientRepo.findById(id);
+
+        if (optional.isPresent()) {
+
+            Client client = optional.get();
+            System.out.println(client);
+            client.updateNotNull(clientPatch);
+            clientRepo.save(client);
+
+        }
     }
 
 }

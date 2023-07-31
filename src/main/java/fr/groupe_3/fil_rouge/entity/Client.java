@@ -16,7 +16,7 @@ public class Client {
   // Attributs
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Integer id;
 
   @Column(name = "company_name")
   private String companyName;
@@ -64,11 +64,11 @@ public class Client {
     this.country = country;
   }
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -159,4 +159,54 @@ public class Client {
   // public void setState(Integer state) {
   // this.state = state;
   // }
+
+  public void updateNotNull(Client clientPatch) {
+    // Company name
+    if (clientPatch.getCompanyName() != null) {
+      this.setCompanyName(clientPatch.getCompanyName());
+    }
+    // FirstName
+    if (clientPatch.getFirstName() != null) {
+      this.setFirstName(clientPatch.getFirstName());
+    }
+    // LastName
+    if (clientPatch.getLastName() != null) {
+      this.setLastName(clientPatch.getLastName());
+    }
+    // Email
+    if (clientPatch.getEmail() != null) {
+      this.setEmail(clientPatch.getEmail());
+    }
+
+    // Phone
+    if (clientPatch.getPhone() != null) {
+      this.setPhone(clientPatch.getPhone());
+    }
+    // Adress
+
+    if (clientPatch.getAdress() != null) {
+      this.setAdress(clientPatch.getAdress());
+    }
+
+    // ZipCode
+    if (clientPatch.getZipCode() != null) {
+      this.setZipCode(clientPatch.getZipCode());
+    }
+
+    // City
+    if (clientPatch.getCity() != null) {
+      this.setCity(clientPatch.getCity());
+    }
+
+    // Country
+    if (clientPatch.getCountry() != null) {
+      this.setCountry(clientPatch.getCountry());
+    }
+
+    // State
+    if (clientPatch.getState() != null) {
+      this.setState(clientPatch.getState());
+    }
+  }
+
 }

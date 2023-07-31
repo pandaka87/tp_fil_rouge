@@ -16,7 +16,7 @@ public class Orders {
     // Attributs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "type_presta")
     private String typePresta;
@@ -27,20 +27,19 @@ public class Orders {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    
     @Column(name = "nb_days")
-    private int nbDays;
-    
+    private Integer nbDays;
+
     @Column(name = "unit_price")
-    private int unitPrice;
-    
-    private int state;
-    
+    private Integer unitPrice;
+
+    private Integer state;
+
     // Constructeurs
     public Orders() {
     }
-    
-    public Orders(int id, String typePresta, String designation, int nbDays, int unitPrice, int state) {
+
+    public Orders(Integer id, String typePresta, String designation, Integer nbDays, Integer unitPrice, Integer state) {
         this.id = id;
         this.typePresta = typePresta;
         this.designation = designation;
@@ -48,32 +47,32 @@ public class Orders {
         this.unitPrice = unitPrice;
         this.state = state;
     }
-    
+
     // Getters Setters
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    
-    public void setId(int id) {
+
+    public void setId(Integer id) {
         this.id = id;
     }
-    
+
     public String getTypePresta() {
         return typePresta;
     }
-    
+
     public void setTypePresta(String typePresta) {
         this.typePresta = typePresta;
     }
-    
+
     public String getDesignation() {
         return designation;
     }
-    
+
     public void setDesignation(String designation) {
         this.designation = designation;
     }
-    
+
     public Client getClient() {
         return client;
     }
@@ -81,28 +80,28 @@ public class Orders {
     public void setClient(Client client) {
         this.client = client;
     }
-    
-    public int getNbDays() {
+
+    public Integer getNbDays() {
         return nbDays;
     }
 
-    public void setNbDays(int nbDays) {
+    public void setNbDays(Integer nbDays) {
         this.nbDays = nbDays;
     }
 
-    public int getUnitPrice() {
+    public Integer getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(int unitPrice) {
+    public void setUnitPrice(Integer unitPrice) {
         this.unitPrice = unitPrice;
     }
 
-    public int getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -30,7 +31,7 @@ public class ClientController {
     }
 
     @GetMapping("clients/{id}")
-    public ResponseEntity<Client> getClientById(@PathVariable("id") Long id) {
+    public ResponseEntity<Client> getClientById(@PathVariable("id") Integer id) {
         Optional<Client> cOptional = clientService.getOneClientById(id);
 
         if (cOptional.isPresent()) {
@@ -53,7 +54,7 @@ public class ClientController {
     }
 
     @DeleteMapping("clients/{id}")
-    public ResponseEntity<String> deleteClient(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deleteClient(@PathVariable("id") Integer id) {
 
         if (clientService.getOneClientById(id).isEmpty()) {
 
@@ -66,7 +67,7 @@ public class ClientController {
     }
 
     @PutMapping("clients/{id}")
-    public ResponseEntity<Client> putClient(@PathVariable("id") Long id, @RequestBody Client updatedClient) {
+    public ResponseEntity<Client> putClient(@PathVariable("id") Integer id, @RequestBody Client updatedClient) {
 
         // id en Json et id en body
         if (!id.equals(updatedClient.getId())) {
@@ -80,6 +81,24 @@ public class ClientController {
 
         clientService.updatedClient(id, updatedClient);
         return ResponseEntity.ok(updatedClient);
+    }
+
+    @PatchMapping("clients/{id}")
+    public ResponseEntity<Object> patchClient(@PathVariable("id") Integer id, @RequestBody Client patchedClient) {
+
+        // id en Json et id en body
+        if (!id.equals(patchedClient.getId())) {
+            return ResponseEntity.badRequest().build();
+
+        }
+        if (clientService.getOneClientById(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+
+        }
+
+        clientService.patchClient(id, patchedClient);
+        return ResponseEntity.ok(clientService.getOneClientById(id));
+
     }
 
 }
