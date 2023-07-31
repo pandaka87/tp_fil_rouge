@@ -40,6 +40,7 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.0.2</version>
 		</dependency>
+
 		<!-- Ajouter cette dépendance pour éviter l'erreur suivante: -->
 		<!-- jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no
 		Jakarta Bean Validation pro -->
@@ -53,10 +54,6 @@
 			<artifactId>mysql-connector-j</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>
