@@ -2,6 +2,8 @@ package fr.groupe_3.fil_rouge.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -38,11 +40,11 @@ public class Client {
 
   private String country;
 
-  // @Column(name = "state")
-  // @Enumerated(EnumType.STRING)
-  // private EtatClient state;
+  @Column(name = "state")
+  @Enumerated(EnumType.ORDINAL)
+  private EtatClient state;
 
-  private Integer state;
+  // private Integer state;
 
   // Constructeurs
   public Client() {
@@ -50,7 +52,7 @@ public class Client {
   }
 
   public Client(String companyName, String firstName, String lastName, String email, String phone,
-      String adress, String zipCode, String city, String country, Integer state) {
+      String adress, String zipCode, String city, String country) {
     this.companyName = companyName;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -60,7 +62,6 @@ public class Client {
     this.zipCode = zipCode;
     this.city = city;
     this.country = country;
-    this.state = state;
   }
 
   public Long getId() {
@@ -143,19 +144,19 @@ public class Client {
     this.country = country;
   }
 
-  // public EtatClient getState() {
-  // return state;
-  // }
-
-  // public void setState(EtatClient state) {
-  // this.state = state;
-  // }
-
-  public Integer getState() {
+  public EtatClient getState() {
     return state;
   }
 
-  public void setState(Integer state) {
+  public void setState(EtatClient state) {
     this.state = state;
   }
+
+  // public Integer getState() {
+  // return state;
+  // }
+
+  // public void setState(Integer state) {
+  // this.state = state;
+  // }
 }
