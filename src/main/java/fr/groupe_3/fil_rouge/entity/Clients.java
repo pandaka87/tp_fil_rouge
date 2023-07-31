@@ -9,12 +9,11 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "clients")
-public class Client {
+public class Clients {
 
-  // Attributs
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Integer id;
 
   @Column(name = "company_name")
   private String companyName;
@@ -29,7 +28,7 @@ public class Client {
 
   private String phone;
 
-  private String adress;
+  private String address;
 
   @Column(name = "zip_code")
   private String zipCode;
@@ -38,36 +37,41 @@ public class Client {
 
   private String country;
 
-  // @Column(name = "state")
-  // @Enumerated(EnumType.STRING)
-  // private EtatClient state;
-
   private Integer state;
 
-  // Constructeurs
-  public Client() {
-
-  }
-
-  public Client(String companyName, String firstName, String lastName, String email, String phone,
-      String adress, String zipCode, String city, String country, Integer state) {
+  public Clients(
+      Integer id,
+      String companyName,
+      String firstName,
+      String lastName,
+      String email,
+      String phone,
+      String address,
+      String zipCode,
+      String city,
+      String country,
+      Integer state) {
+    this.id = id;
     this.companyName = companyName;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.phone = phone;
-    this.adress = adress;
+    this.address = address;
     this.zipCode = zipCode;
     this.city = city;
     this.country = country;
     this.state = state;
   }
 
-  public Long getId() {
+  public Clients() {
+  }
+
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -111,12 +115,12 @@ public class Client {
     this.phone = phone;
   }
 
-  public String getAdress() {
-    return adress;
+  public String getAddress() {
+    return address;
   }
 
-  public void setAdress(String adress) {
-    this.adress = adress;
+  public void setAddress(String address) {
+    this.address = address;
   }
 
   public String getZipCode() {
@@ -143,19 +147,38 @@ public class Client {
     this.country = country;
   }
 
-  // public EtatClient getState() {
-  // return state;
-  // }
-
-  // public void setState(EtatClient state) {
-  // this.state = state;
-  // }
-
   public Integer getState() {
     return state;
   }
 
   public void setState(Integer state) {
     this.state = state;
+  }
+
+  @Override
+  public String toString() {
+    return ("Clients [id=" +
+        id +
+        ", companyName=" +
+        companyName +
+        ", firstName=" +
+        firstName +
+        ", lastName=" +
+        lastName +
+        ", email=" +
+        email +
+        ", phone=" +
+        phone +
+        ", address=" +
+        address +
+        ", zipCode=" +
+        zipCode +
+        ", city=" +
+        city +
+        ", country=" +
+        country +
+        ", state=" +
+        state +
+        "]");
   }
 }
